@@ -1,0 +1,10 @@
+.inputbox{
+    width: 500px;
+}
+
+body{
+    background-color: rgb(55, 56, 74);
+    color: white;
+    justify-content: center;
+}
+
