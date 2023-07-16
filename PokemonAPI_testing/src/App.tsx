@@ -6,7 +6,7 @@ import PokemonDetails from './components/PokemonDetails/pokeapi';
 function App(){
     return(
         <>
-
+            <h2>testando api 🤔</h2>
             <PokemonDetails/>  
 
         </>

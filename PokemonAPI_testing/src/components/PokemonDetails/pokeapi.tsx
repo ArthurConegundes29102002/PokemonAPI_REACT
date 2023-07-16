@@ -6,7 +6,8 @@ export default function PokemonDetails() {
   const [userInput, setUserInput] = useState('');
   const [data, setData] = useState<any>(null);
   const [data_img, setDataIMG] = useState<any>(null);
-  const [data_type, setDataTYPE] = useState<any[]>([null]);
+  const [data_type, setDataTYPE] = useState<any>(null);
+  // const [pokemon_attack, setDataHabilities] = useState<any>(null);
   
   // ------------------------------------------------- implementando o UseEffect:
 
@@ -16,7 +17,8 @@ export default function PokemonDetails() {
     } else {
       setData(null);
       setDataIMG(null);
-      setDataTYPE([null]);
+      // setDataTYPE([null]);
+      setDataTYPE(null)
     }
   }, [userInput]);
 
@@ -31,13 +33,15 @@ export default function PokemonDetails() {
       let type_array:String[]=[]
       console.log(response)
       const {data} = response
-      data.types.map((e:any)=>{
-        const type:string=e.type.name
+      data.types.map((e:any)=>{ 
+        const type:string= e.type.name //nome do tipo do pokemon
         type_array.push(type)
       })
+      let type_array_result = type_array.join(' ') //aqui eu estou separando os valores que saem do "type array" com um espaço evitando que fiquem juntos
+      
       setData(response.data);
       setDataIMG(response.data.sprites.front_default)
-      setDataTYPE(type_array)
+      setDataTYPE(type_array_result)
 
 
       // --------------------------------------------
@@ -51,17 +55,16 @@ export default function PokemonDetails() {
   };
 
 // --------------------------------------------------------------------------------------------------
-
   return (
     <div className='big_container'>
 
-      <input  className='inputbox' type="text" value={userInput} onChange={handleInputChange} placeholder="input a Pokémon ID..." />
+      <input  className='inputbox' type="text" value={userInput} onChange={handleInputChange} placeholder="digite um número..." />
 
       {data && data.name && <h1>Name: {data.name}</h1>}
 
       <img src={data_img}/>
-
-      <h2>{data_type}</h2>
+      
+      <h2>Tipo do Pokemon: {data_type}</h2>
 
     </div>
   );
