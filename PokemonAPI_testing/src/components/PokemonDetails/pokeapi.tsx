@@ -7,10 +7,11 @@ export default function PokemonDetails() {
   const [data, setData] = useState<any>(null);
   const [data_img, setDataIMG] = useState<any>(null);
   const [data_type, setDataTYPE] = useState<any>(null);
-  const [loading_message, setLoading] = useState<boolean>(true);
+  const [loading_message, setLoading] = useState<boolean>(true); //mensagem de loading inicia como true
   const [error, setError] = useState<string | null>(null); 
 
-  
+  //-------------------------------------------------------------- useEffect:
+
   useEffect(() => {
     if (userInput) {
       Catching_Data();
@@ -20,7 +21,9 @@ export default function PokemonDetails() {
       setDataTYPE(null);
       setError(null);
     }
-  }, [userInput]);
+  }, [userInput]); //observando a variável userInput
+
+ //-------------------------------------------------------------- função que vai lidar com a requisição e a mudança dos dados na tela:
 
   const Catching_Data = async () => {
     setLoading(true)
@@ -51,9 +54,15 @@ export default function PokemonDetails() {
     }
   };
 
+   //-------------------------------------------------------------- Função que lida com o input do usuário:
+
+
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserInput(event.target.value);
   };
+
+   //--------------------------------------------------------------
+
 
   return (
     <div className='big_container'>
