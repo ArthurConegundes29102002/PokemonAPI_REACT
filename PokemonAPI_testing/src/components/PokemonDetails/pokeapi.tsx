@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import './pokeapi.css';
+import hourglass from '../../assets/hourglass.png'
 
 export default function PokemonDetails() {
   const [userInput, setUserInput] = useState('');
@@ -38,11 +39,14 @@ export default function PokemonDetails() {
       let type_array_result:string = type_array.join(' - ');
 
       setData(response.data);
-      setDataIMG(response.data.sprites.other.dream_world.front_default); //pegando imagem
+
+      // setDataIMG(response.data.sprites.other.dream_world.front_default); -------------> //pegando imagem "bonitinha"
+
+      setDataIMG(response.data.sprites.front_default); //pegando imagem
       setDataTYPE(type_array_result);
-   
       setError(null); // Limpa o erro se a solicitação for bem-sucedida
       setLoading(false)
+
     } catch (error) {
       console.error('Error catching the response:', error);
       setError('Infelizmente esse pokemon ainda não existe 👎'); // Define a mensagem de erro"
@@ -72,16 +76,15 @@ export default function PokemonDetails() {
       {data && data.name && (
         loading_message ? 
         <div>
-          <h1>loading pokemon name...</h1>
-          <h2>loading pokemon image...</h2>
-          <h2>loading pokemon type...</h2>
+          <h1>loading pokemon assets...</h1>
+          <img src={hourglass}/>
         </div>
         //operador ternário para carregar as mensagens de loading
         : //
         <div>
-          <h1>Name: {data.name}</h1>
+          <h1>nome: {data.name}</h1>
           <img src={data_img} alt={data.name} />
-          <h2>Tipo do Pokemon: {data_type}</h2>
+          <h2>tipo do pokemon: {data_type}</h2>
         </div>
       )}
     </div>

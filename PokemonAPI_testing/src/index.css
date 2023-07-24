@@ -1,3 +1,7 @@
 body{
     text-align: center;
 }
+
+body PokemonList{
+    text-align: left;
+}
