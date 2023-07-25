@@ -10,7 +10,6 @@ function App(){
             <h2>testando api 🤔</h2>
 
             <PokemonDetails/> 
-
             <PokemonList/> 
 
         </>
