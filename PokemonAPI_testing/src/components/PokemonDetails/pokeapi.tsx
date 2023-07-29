@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import './pokeapi.css';
-import hourglass from '../../assets/hourglass.png'
+import hourglass from '../../assets/hourglass2.png'
 
 export default function PokemonDetails() {
   const [userInput, setUserInput] = useState('');
