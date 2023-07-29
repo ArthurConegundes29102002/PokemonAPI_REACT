@@ -58,6 +58,12 @@ export default function PokemonDetails() {
     }
   };
 
+  //-------------------------------------------------------------- Função de Update:
+
+  function Update(){
+      Catching_Data()
+  }
+
    //-------------------------------------------------------------- Função que lida com o input do usuário:
 
 
@@ -71,7 +77,7 @@ export default function PokemonDetails() {
   return (
     <div className='big_container'>
       <input className='inputbox' type="text" value={userInput} onChange={handleInputChange} placeholder="digite um número..." />
-
+      <button onClick={Update}>Atualizar</button>
       {error && <h2>Error: {error}</h2>}
       {data && data.name && (
         loading_message ? 

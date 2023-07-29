@@ -1,3 +1,5 @@
+//------------------------------------- código ainda não comentado
+
 import './pokelist.css'
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
@@ -15,7 +17,6 @@ const PokemonList: React.FC = () => {
     try {
       const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${limit}`);
       const data = response.data.results;
-
       const pokemonData: Pokemon[] = await Promise.all(
         data.map(async (pokemon: any) => {
           const result = await axios.get(pokemon.url);
